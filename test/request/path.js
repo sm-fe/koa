@@ -37,4 +37,10 @@ describe('ctx.path=', () => {
     const url = parseurl(ctx.req);
     assert.equal(url.path, '/login?foo=bar');
   });
+
+  it('should always be string', () => {
+    const ctx = context({ url: '/login?foo=bar' });
+    ctx.path = '';
+    assert.equal(typeof ctx.path, 'string');
+  });
 });
